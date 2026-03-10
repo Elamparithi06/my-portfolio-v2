@@ -51,7 +51,7 @@ export const projects: Project[] = [
 ];
 
 export const experiencePoints = [
-  "Quality Management Audit at Hema's Enterprises Private Limited (2024 - Present).",
+  "Quality Management Audit at Hema's Enterprises Private Limited (Cavinkare) (2024 - Present).",
   "Act as a functional bridge between Quality and IT teams for internal automation portals.",
   "Gather business requirements and translate them into functional specs for developers.",
   "Participate in UAT and validate workflow logic, approval hierarchies, and role-based access.",
@@ -78,7 +78,6 @@ export const aboutSummary =
   "Software Developer with strong interest in scalable web development and real-world problem solving. I combine frontend implementation skills with requirement understanding, workflow validation, and QA collaboration to ship reliable solutions.";
 
 export const highlights = [
-  "1.7 years industry experience in audit operations",
   "Functional bridge between QA and IT teams",
   "Hands-on UAT and workflow validation",
   "Built React projects with API integrations",
