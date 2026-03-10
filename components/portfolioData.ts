@@ -71,7 +71,7 @@ export const contact = {
 };
 
 export const resume = {
-  file: "/Elamparithi_Resume.pdf",
+  file: "/Elamparithi_Resume_v2.pdf",
 };
 
 export const aboutSummary =
