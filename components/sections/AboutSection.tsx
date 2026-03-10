@@ -1,7 +1,7 @@
 import { aboutSummary, highlights } from "../portfolioData";
 
 function getAuditExperienceHighlight() {
-  const startDate = new Date(2024, 5, 1); // June 1, 2024
+  const startDate = new Date(2024, 5, 10); // June 10, 2024
   const now = new Date();
   const elapsedMs = Math.max(now.getTime() - startDate.getTime(), 0);
   const years = elapsedMs / (1000 * 60 * 60 * 24 * 365.25);
