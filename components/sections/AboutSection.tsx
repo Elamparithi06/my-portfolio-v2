@@ -1,11 +1,15 @@
+"use client";
+
 import { aboutSummary, highlights } from "../portfolioData";
 
 function getAuditExperienceHighlight() {
   const startDate = new Date(2024, 5, 10); // June 10, 2024
   const now = new Date();
-  const elapsedMs = Math.max(now.getTime() - startDate.getTime(), 0);
-  const years = elapsedMs / (1000 * 60 * 60 * 24 * 365.25);
-  const roundedYears = Math.round(years * 10) / 10;
+  const yearDiff = now.getFullYear() - startDate.getFullYear();
+  const monthDiff = now.getMonth() - startDate.getMonth();
+  const dayAdjustment = now.getDate() < startDate.getDate() ? -1 : 0;
+  const totalMonths = Math.max(yearDiff * 12 + monthDiff + dayAdjustment, 0);
+  const roundedYears = Math.round((totalMonths / 12) * 10) / 10;
   return `${roundedYears} years industry experience in audit operations`;
 }
 
