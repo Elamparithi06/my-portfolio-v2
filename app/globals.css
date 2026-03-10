@@ -1,26 +1,179 @@
 @import "tailwindcss";
+@import "./designs/design-neon.css";
+@import "./designs/design-sunset.css";
+@import "./designs/design-mono.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #070d1a;
+  --foreground: #e8eefc;
+  --muted: #aec0e6;
+  --surface: rgba(15, 24, 46, 0.75);
+  --surface-strong: rgba(11, 19, 37, 0.92);
+  --border: rgba(61, 216, 255, 0.28);
+  --accent: #3dd8ff;
+  --accent-soft: #89ebff;
+  --accent-2: #6df7c1;
+  --spotlight: rgba(61, 216, 255, 0.16);
+  --bg-glow-a: rgba(61, 216, 255, 0.2);
+  --bg-glow-b: rgba(109, 247, 193, 0.16);
+  --hero-grad-1: #53d6ff;
+  --hero-grad-2: #6dd6ff;
+  --hero-grad-3: #66f2c8;
+  --hero-grad-4: #8a7dff;
+  --design-spotlight: rgba(61, 216, 255, 0.16);
+  --design-glow-a: rgba(61, 216, 255, 0.2);
+  --design-glow-b: rgba(109, 247, 193, 0.16);
+}
+
+html[data-theme="light"] {
+  --background: #eef4ff;
+  --foreground: #0b1b34;
+  --muted: #3f5477;
+  --surface: rgba(255, 255, 255, 0.82);
+  --surface-strong: rgba(255, 255, 255, 0.94);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sora);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7.5rem;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sora), sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: white;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-delay {
+  animation: float 7.5s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.hero-highlight {
+  background: linear-gradient(
+    92deg,
+    var(--hero-grad-1) 0%,
+    var(--hero-grad-2) 35%,
+    var(--hero-grad-3) 68%,
+    var(--hero-grad-4) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-highlight-2 {
+  background: linear-gradient(
+    96deg,
+    var(--hero-grad-2) 0%,
+    var(--hero-grad-3) 42%,
+    var(--hero-grad-4) 72%,
+    var(--hero-grad-1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-role {
+  background: linear-gradient(92deg, var(--hero-grad-1) 0%, var(--hero-grad-3) 50%, var(--hero-grad-4) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-orb-a {
+  background: color-mix(in srgb, var(--accent) 36%, transparent);
+}
+
+.hero-orb-b {
+  background: color-mix(in srgb, var(--accent-2) 36%, transparent);
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #07162d;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+.section-block {
+  border-left: 2px solid color-mix(in srgb, var(--accent) 48%, transparent);
+  padding: 0.5rem 0 0.5rem 1rem;
+}
+
+.skill-track {
+  background: color-mix(in srgb, var(--foreground) 14%, transparent);
+}
+
+.skill-fill {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+}
+
+.project-card-active {
+  border-color: color-mix(in srgb, var(--accent) 70%, white 20%);
+  background: color-mix(in srgb, var(--accent) 18%, var(--surface));
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+
+.profile-role-badge {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--accent-soft);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .floating,
+  .floating-delay {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

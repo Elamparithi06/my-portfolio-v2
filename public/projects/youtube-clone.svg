@@ -1,0 +1,13 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#0F172A"/>
+  <rect x="40" y="32" width="1200" height="74" rx="14" fill="#111C34" stroke="#21426A"/>
+  <rect x="74" y="58" width="160" height="22" rx="11" fill="#E11D48"/>
+  <rect x="280" y="58" width="520" height="22" rx="11" fill="#1F2E4A"/>
+  <rect x="1060" y="52" width="144" height="34" rx="17" fill="#1E293B" stroke="#334155"/>
+  <rect x="40" y="134" width="840" height="474" rx="16" fill="#111C34" stroke="#21426A"/>
+  <polygon points="430,272 430,470 610,371" fill="#E11D48"/>
+  <rect x="918" y="134" width="322" height="136" rx="14" fill="#111C34" stroke="#21426A"/>
+  <rect x="918" y="286" width="322" height="136" rx="14" fill="#111C34" stroke="#21426A"/>
+  <rect x="918" y="438" width="322" height="136" rx="14" fill="#111C34" stroke="#21426A"/>
+  <text x="70" y="678" fill="#93C5FD" font-family="Arial, sans-serif" font-size="34" font-weight="700">YouTube Clone - React + YouTube API</text>
+</svg>

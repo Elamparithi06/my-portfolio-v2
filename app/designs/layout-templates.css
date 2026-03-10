@@ -1,0 +1,202 @@
+﻿html[data-layout="creative"] body {
+  background: linear-gradient(180deg, #d9ad39 0%, #d8a530 100%);
+}
+
+html[data-layout="creative"] .site-shell {
+  color: #132432;
+}
+
+html[data-layout="creative"] .grid-noise {
+  opacity: 0;
+}
+
+html[data-layout="creative"] .nav-shell {
+  background: rgba(255, 248, 232, 0.92);
+  border-color: rgba(34, 49, 78, 0.22);
+}
+
+html[data-layout="creative"] .site-main {
+  max-width: 86rem;
+}
+
+html[data-layout="creative"] .creative-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1100px) {
+  html[data-layout="creative"] .creative-grid {
+    grid-template-columns: 1.7fr 1fr;
+    align-items: start;
+  }
+
+  html[data-layout="creative"] .creative-right {
+    position: sticky;
+    top: 6.5rem;
+  }
+}
+
+html[data-layout="creative"] .hero-section,
+html[data-layout="creative"] .section-panel,
+html[data-layout="creative"] .skills-section,
+html[data-layout="creative"] .project-card,
+html[data-layout="creative"] .contact-section,
+html[data-layout="creative"] .site-footer {
+  background: rgba(255, 252, 242, 0.95) !important;
+  border-color: rgba(31, 56, 92, 0.18) !important;
+  box-shadow: 0 10px 20px rgba(57, 41, 8, 0.1) !important;
+}
+
+html[data-layout="split"] body {
+  background: #ece8f5;
+}
+
+html[data-layout="split"] .site-shell {
+  color: #111827;
+}
+
+html[data-layout="split"] .grid-noise {
+  opacity: 0;
+}
+
+html[data-layout="split"] .site-main {
+  max-width: 88rem;
+}
+
+html[data-layout="split"] .nav-shell {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(37, 54, 91, 0.16);
+}
+
+html[data-layout="split"] .split-hero-wrap .hero-section {
+  background: #ffffff !important;
+  border: 0 !important;
+  box-shadow: 0 20px 40px rgba(23, 39, 74, 0.08) !important;
+  border-radius: 0.5rem !important;
+}
+
+html[data-layout="split"] .section-panel,
+html[data-layout="split"] .skills-section,
+html[data-layout="split"] .project-card,
+html[data-layout="split"] .contact-section,
+html[data-layout="split"] .site-footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+html[data-layout="split"] .skills-grid,
+html[data-layout="split"] .projects-grid {
+  gap: 1.25rem;
+}
+
+html[data-layout="split"] .skill-item,
+html[data-layout="split"] .project-card {
+  border: 1px solid rgba(35, 53, 88, 0.16) !important;
+  border-radius: 0.5rem !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+html[data-layout="editorial"] body {
+  background: #0a0a0a;
+}
+
+html[data-layout="editorial"] .site-shell {
+  color: #f5f5f5;
+}
+
+html[data-layout="editorial"] .grid-noise {
+  opacity: 0;
+}
+
+html[data-layout="editorial"] .nav-shell {
+  background: #111111;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-radius: 0.35rem;
+}
+
+html[data-layout="editorial"] .hero-section,
+html[data-layout="editorial"] .section-panel,
+html[data-layout="editorial"] .skills-section,
+html[data-layout="editorial"] .project-card,
+html[data-layout="editorial"] .contact-section,
+html[data-layout="editorial"] .site-footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+html[data-layout="editorial"] .hero-content h2 {
+  font-size: clamp(2.9rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+html[data-layout="editorial"] .about-section,
+html[data-layout="editorial"] .experience-section,
+html[data-layout="editorial"] .skills-section,
+html[data-layout="editorial"] .projects-section,
+html[data-layout="editorial"] .contact-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 2rem;
+}
+
+html[data-layout="editorial"] .skill-item,
+html[data-layout="editorial"] .project-card {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-radius: 0 !important;
+}
+
+html[data-layout="minimal"] body {
+  background: #f7f7f7;
+}
+
+html[data-layout="minimal"] .site-shell {
+  color: #1f2937;
+}
+
+html[data-layout="minimal"] .grid-noise,
+html[data-layout="minimal"] .floating,
+html[data-layout="minimal"] .floating-delay {
+  opacity: 0;
+  animation: none;
+}
+
+html[data-layout="minimal"] .nav-shell {
+  background: #ffffff;
+  border-color: rgba(31, 41, 55, 0.14);
+  border-radius: 9999px;
+  box-shadow: none;
+}
+
+html[data-layout="minimal"] .hero-section,
+html[data-layout="minimal"] .section-panel,
+html[data-layout="minimal"] .skills-section,
+html[data-layout="minimal"] .project-card,
+html[data-layout="minimal"] .contact-section,
+html[data-layout="minimal"] .site-footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+html[data-layout="minimal"] .skills-section,
+html[data-layout="minimal"] .projects-section,
+html[data-layout="minimal"] .about-section,
+html[data-layout="minimal"] .experience-section,
+html[data-layout="minimal"] .contact-section {
+  border-top: 1px solid rgba(31, 41, 55, 0.14);
+  padding-top: 1.75rem;
+}
+
+html[data-layout="minimal"] .skill-item,
+html[data-layout="minimal"] .project-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(31, 41, 55, 0.12) !important;
+  border-radius: 0.5rem !important;
+}
