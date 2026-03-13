@@ -221,13 +221,50 @@ body {
   }
 }
 
+.typewriter-shell {
+  max-width: 100%;
+}
+
+.typewriter-placeholder {
+  display: block;
+  white-space: nowrap;
+}
+
+.typewriter-text {
+  min-height: 1.2em;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.typewriter-cursor {
+  animation: typewriter-cursor 850ms step-end infinite;
+}
+
+@keyframes typewriter-cursor {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .floating,
-  .floating-delay {
+  .floating-delay,
+  .typewriter-text {
     transition: none;
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  .typewriter-cursor {
+    animation: none;
+    opacity: 1;
   }
 }

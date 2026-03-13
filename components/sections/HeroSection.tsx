@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { resume } from "../portfolioData";
 
 type HeroSectionProps = {
@@ -10,6 +12,8 @@ type HeroSectionProps = {
 export default function HeroSection({ role }: HeroSectionProps) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const profileCardRef = useRef<HTMLDivElement>(null);
+  const opportunityText = "Open to opportunities....";
+  const [typedOpportunityText, setTypedOpportunityText] = useState(opportunityText);
 
   const handleCardMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = profileCardRef.current?.getBoundingClientRect();
@@ -24,13 +28,64 @@ export default function HeroSection({ role }: HeroSectionProps) {
 
   const resetCardTilt = () => setTilt({ x: 0, y: 0 });
 
+  useEffect(() => {
+    let index = 0;
+    let deleting = false;
+    let timeoutId = 0;
+
+    const tick = () => {
+      if (!deleting) {
+        index += 1;
+        setTypedOpportunityText(opportunityText.slice(0, index));
+
+        if (index >= opportunityText.length) {
+          deleting = true;
+          timeoutId = window.setTimeout(tick, 1200);
+          return;
+        }
+
+        timeoutId = window.setTimeout(tick, 70);
+        return;
+      }
+
+      index -= 1;
+      setTypedOpportunityText(opportunityText.slice(0, Math.max(index, 0)));
+
+      if (index <= 0) {
+        deleting = false;
+        timeoutId = window.setTimeout(tick, 300);
+        return;
+      }
+
+      timeoutId = window.setTimeout(tick, 35);
+    };
+
+    timeoutId = window.setTimeout(() => {
+      setTypedOpportunityText("");
+      tick();
+    }, 250);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [opportunityText]);
+
   return (
     <section className="hero-section reveal mb-20 grid items-center gap-5 border-b border-[color:var(--border)]/60 pb-12 min-[520px]:grid-cols-[minmax(0,1fr)_11rem] min-[520px]:gap-6 md:gap-8 lg:mb-24 lg:grid-cols-[1.15fr_0.85fr] lg:pb-14">
       <div className="hero-content relative">
         <div className="hero-orb-a floating pointer-events-none absolute -left-8 -top-8 h-24 w-24 rounded-full blur-2xl" />
         <div className="hero-orb-b floating-delay pointer-events-none absolute -bottom-8 right-3 h-20 w-20 rounded-full blur-2xl" />
 
-        <p className="mb-4 text-xs uppercase tracking-[0.26em] text-[var(--accent)] sm:text-sm sm:tracking-[0.3em]">Open to opportunities</p>
+        <p
+          className="mb-4 max-w-[18rem] whitespace-nowrap text-[10px] uppercase tracking-[0.14em] text-[var(--accent)] sm:max-w-none sm:text-sm sm:tracking-[0.26em]"
+          aria-label={opportunityText}
+        >
+          <span className="typewriter-shell relative inline-block" aria-hidden="true">
+            <span className="typewriter-placeholder invisible">{opportunityText}</span>
+            <span className="typewriter-text absolute inset-0 inline-flex items-center">
+              <span>{typedOpportunityText}</span>
+              <span className="typewriter-cursor ml-1 inline-block h-[1.05em] w-[2px] bg-current" />
+            </span>
+          </span>
+        </p>
         <h2 className="max-w-3xl text-[2.5rem] font-semibold leading-tight sm:text-5xl lg:text-6xl">
           I build{" "}
           <span className="hero-highlight">user-focused web applications</span>{" "}
