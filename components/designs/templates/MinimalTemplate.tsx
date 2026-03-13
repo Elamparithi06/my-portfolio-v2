@@ -7,8 +7,8 @@ import SkillsSection from "@/components/sections/SkillsSection";
 
 type TemplateProps = {
   role: string;
-  activeProject: string;
-  onProjectHover: (title: string) => void;
+  activeProject: string | null;
+  onProjectHover: (title: string | null) => void;
 };
 
 export default function MinimalTemplate({ role, activeProject, onProjectHover }: TemplateProps) {
