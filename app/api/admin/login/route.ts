@@ -16,7 +16,7 @@ function sanitizeNextPath(value: string | null) {
 
 export async function POST(request: Request) {
   if (!areAdminCredentialsConfigured()) {
-    return NextResponse.redirect(new URL("/admin/login?error=setup", request.url));
+    return NextResponse.redirect(new URL("/admin/login?error=setup", request.url), 303);
   }
 
   const formData = await request.formData();
@@ -25,10 +25,10 @@ export async function POST(request: Request) {
   const nextPath = sanitizeNextPath(String(formData.get("next") ?? "/admin/insights"));
 
   if (!isValidAdminLogin(username, password)) {
-    return NextResponse.redirect(new URL(`/admin/login?error=invalid&next=${encodeURIComponent(nextPath)}`, request.url));
+    return NextResponse.redirect(new URL(`/admin/login?error=invalid&next=${encodeURIComponent(nextPath)}`, request.url), 303);
   }
 
-  const response = NextResponse.redirect(new URL(nextPath, request.url));
+  const response = NextResponse.redirect(new URL(nextPath, request.url), 303);
   response.cookies.set({
     name: getAdminCookieName(),
     value: createAdminSessionValue(),
