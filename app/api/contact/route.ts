@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { contact } from "@/components/portfolioData";
+import { getRequestMetadata } from "@/lib/server/requestMetadata";
+import { appendRecord } from "@/lib/server/storage";
 
 const resendApiUrl = "https://api.resend.com/emails";
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,6 +27,7 @@ export async function POST(request: Request) {
   const resendApiKey = process.env.RESEND_API_KEY;
   const resendFromEmail = process.env.RESEND_FROM_EMAIL;
   const resendToEmail = process.env.RESEND_TO_EMAIL ?? contact.email;
+  const requestMetadata = getRequestMetadata(request);
 
   if (!resendApiKey || !resendFromEmail) {
     return NextResponse.json(
@@ -120,6 +123,19 @@ export async function POST(request: Request) {
       { status: 502 },
     );
   }
+
+  await appendRecord("contact-submissions.json", {
+    submittedAt: new Date().toISOString(),
+    name,
+    email,
+    company,
+    subject,
+    message,
+    ip: requestMetadata.ip,
+    referrer: requestMetadata.referrer,
+    userAgent: requestMetadata.userAgent,
+    location: requestMetadata.location,
+  });
 
   return NextResponse.json({
     message: "Thanks for reaching out. Your message has been sent.",

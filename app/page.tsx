@@ -106,6 +106,33 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const visitorSessionKey = "portfolio-visitor-logged";
+
+    if (window.sessionStorage.getItem(visitorSessionKey)) {
+      return;
+    }
+
+    window.sessionStorage.setItem(visitorSessionKey, "true");
+
+    void fetch("/api/analytics", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        path: window.location.pathname,
+        screenWidth: window.innerWidth,
+        screenHeight: window.innerHeight,
+        language: window.navigator.language,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      }),
+      keepalive: true,
+    }).catch(() => {
+      window.sessionStorage.removeItem(visitorSessionKey);
+    });
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
