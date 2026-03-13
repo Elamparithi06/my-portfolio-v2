@@ -16,7 +16,7 @@ export default function DesignToggle({ designMode, onToggle }: DesignToggleProps
     <button
       type="button"
       onClick={onToggle}
-      className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[color:var(--border)] bg-[var(--surface-strong)] px-3 text-xs font-semibold text-[var(--foreground)] transition hover:border-[var(--accent)]"
+      className="btn-secondary inline-flex h-10 items-center justify-center gap-2 rounded-full px-3 text-xs font-semibold transition"
       aria-label="Toggle design mode"
       title="Switch design style"
     >

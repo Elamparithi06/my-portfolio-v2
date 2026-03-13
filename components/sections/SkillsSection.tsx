@@ -4,10 +4,10 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="skills-section reveal mb-20">
       <h3 className="mb-6 text-2xl font-semibold text-[var(--accent-soft)]">Skills</h3>
-      <div className="skills-grid grid gap-4 sm:grid-cols-2">
+      <div className="skills-grid grid gap-6 sm:grid-cols-2">
         {skills.map((skill) => (
-          <div key={skill.name} className="skill-item rounded-xl border border-[color:var(--border)]/60 bg-[color:var(--surface)]/45 p-4">
-            <div className="mb-2 flex items-center justify-between">
+          <div key={skill.name} className="skill-item border-b border-[color:var(--border)]/45 pb-4">
+            <div className="mb-3 flex items-center justify-between gap-4">
               <p className="font-medium">{skill.name}</p>
               <p className="font-mono text-xs text-[var(--accent)]">{skill.level}%</p>
             </div>

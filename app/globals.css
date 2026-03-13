@@ -23,6 +23,11 @@
   --design-spotlight: rgba(61, 216, 255, 0.16);
   --design-glow-a: rgba(61, 216, 255, 0.2);
   --design-glow-b: rgba(109, 247, 193, 0.16);
+  --btn-primary-text: #07162d;
+  --btn-primary-shadow: color-mix(in srgb, var(--accent) 20%, transparent);
+  --btn-secondary-bg: color-mix(in srgb, var(--surface-strong) 92%, transparent);
+  --btn-secondary-text: var(--foreground);
+  --btn-secondary-hover-bg: color-mix(in srgb, var(--accent) 10%, var(--surface-strong));
 }
 
 html[data-theme="light"] {
@@ -31,6 +36,30 @@ html[data-theme="light"] {
   --muted: #3f5477;
   --surface: rgba(255, 255, 255, 0.82);
   --surface-strong: rgba(255, 255, 255, 0.94);
+}
+
+html[data-theme="light"][data-design="neon"] {
+  --btn-primary-text: #f5fbff;
+  --btn-primary-shadow: rgba(17, 139, 194, 0.24);
+  --btn-secondary-bg: rgba(244, 251, 255, 0.92);
+  --btn-secondary-text: #0f4f76;
+  --btn-secondary-hover-bg: rgba(221, 244, 255, 0.96);
+}
+
+html[data-theme="light"][data-design="sunset"] {
+  --btn-primary-text: #fff9f2;
+  --btn-primary-shadow: rgba(217, 106, 61, 0.24);
+  --btn-secondary-bg: rgba(255, 247, 240, 0.94);
+  --btn-secondary-text: #9e4d2c;
+  --btn-secondary-hover-bg: rgba(255, 236, 223, 0.98);
+}
+
+html[data-theme="light"][data-design="mono"] {
+  --btn-primary-text: #f8fbff;
+  --btn-primary-shadow: rgba(90, 111, 150, 0.22);
+  --btn-secondary-bg: rgba(245, 248, 255, 0.95);
+  --btn-secondary-text: #435675;
+  --btn-secondary-hover-bg: rgba(232, 238, 248, 0.98);
 }
 
 @theme inline {
@@ -125,11 +154,25 @@ body {
 
 .btn-primary {
   background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%);
-  color: #07162d;
+  color: var(--btn-primary-text);
+  box-shadow: 0 12px 28px var(--btn-primary-shadow);
 }
 
 .btn-primary:hover {
-  filter: brightness(1.06);
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+
+.btn-secondary:hover {
+  background: var(--btn-secondary-hover-bg);
+  border-color: color-mix(in srgb, var(--accent) 54%, transparent);
 }
 
 .section-block {
@@ -164,6 +207,17 @@ body {
   }
   50% {
     transform: translateY(-12px);
+  }
+}
+
+@keyframes popup-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 

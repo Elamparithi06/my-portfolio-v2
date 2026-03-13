@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { projects, roles } from "@/components/portfolioData";
+import { roles } from "@/components/portfolioData";
 import type { DesignMode, Theme } from "@/components/types";
 import NeonLayout from "@/components/designs/NeonLayout";
 import SunsetLayout from "@/components/designs/SunsetLayout";
@@ -11,7 +11,7 @@ import MonoLayout from "@/components/designs/MonoLayout";
 
 export default function Home() {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [activeProject, setActiveProject] = useState(projects[0].title);
+  const [activeProject, setActiveProject] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState("about");
   const [mousePosition, setMousePosition] = useState({ x: 600, y: 300 });
   const [theme, setTheme] = useState<Theme>("dark");

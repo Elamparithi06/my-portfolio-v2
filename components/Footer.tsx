@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer className="site-footer relative z-10 mt-10 w-full border-t border-[color:var(--border)] bg-[var(--surface)]">
-      <div className="footer-inner mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-4 px-6 py-5 sm:flex-row sm:items-center sm:px-10">
+      <div className="footer-inner mx-auto flex w-full max-w-[88rem] flex-col items-start justify-between gap-4 px-6 py-5 sm:flex-row sm:items-center sm:px-10 2xl:px-12">
         <p className="text-sm text-[var(--muted)]">
           (c) {year} {contact.name}. All rights reserved.
         </p>

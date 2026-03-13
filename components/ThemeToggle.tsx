@@ -10,7 +10,7 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
     <button
       type="button"
       onClick={onToggle}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--border)] bg-[var(--surface-strong)] text-[var(--foreground)] transition hover:border-[var(--accent)]"
+      className="btn-secondary inline-flex h-10 w-10 items-center justify-center rounded-full transition"
       aria-label="Toggle light dark mode"
     >
       {theme === "dark" ? (

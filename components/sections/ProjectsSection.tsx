@@ -2,21 +2,22 @@ import Image from "next/image";
 import { projects } from "../portfolioData";
 
 type ProjectsSectionProps = {
-  activeProject: string;
-  onProjectHover: (title: string) => void;
+  activeProject: string | null;
+  onProjectHover: (title: string | null) => void;
 };
 
 export default function ProjectsSection({ activeProject, onProjectHover }: ProjectsSectionProps) {
   return (
     <section id="projects" className="projects-section reveal mb-20">
       <h3 className="mb-6 text-2xl font-semibold text-[var(--accent-soft)]">Featured Projects</h3>
-      <div className="projects-grid grid gap-5 md:grid-cols-3">
+      <div className="projects-grid grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {projects.map((project) => {
           const active = activeProject === project.title;
           return (
             <article
               key={project.title}
               onMouseEnter={() => onProjectHover(project.title)}
+              onMouseLeave={() => onProjectHover(null)}
               className={`project-card rounded-2xl border p-5 transition ${
                 active
                   ? "project-card-active"
