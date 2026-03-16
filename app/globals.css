@@ -28,6 +28,14 @@
   --btn-secondary-bg: color-mix(in srgb, var(--surface-strong) 92%, transparent);
   --btn-secondary-text: var(--foreground);
   --btn-secondary-hover-bg: color-mix(in srgb, var(--accent) 10%, var(--surface-strong));
+  --scrollbar-track: color-mix(in srgb, var(--surface-strong) 88%, var(--background));
+  --scrollbar-thumb: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+  --scrollbar-thumb-border: color-mix(in srgb, var(--surface-strong) 92%, transparent);
+  --scrollbar-thumb-hover: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 88%, white 12%) 0%,
+    color-mix(in srgb, var(--accent-2) 86%, white 14%) 100%
+  );
 }
 
 html[data-theme="light"] {
@@ -76,6 +84,8 @@ html[data-theme="light"][data-design="mono"] {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 7.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 72%, var(--accent-2)) var(--scrollbar-track);
 }
 
 body {
@@ -84,6 +94,25 @@ body {
   color: var(--foreground);
   font-family: var(--font-sora), sans-serif;
   min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+  width: 0.9rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 3px solid var(--scrollbar-thumb-border);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, white 10%, transparent);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
 }
 
 ::selection {
