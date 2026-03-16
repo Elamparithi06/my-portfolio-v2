@@ -26,6 +26,23 @@ export default function Navbar({
   activeSection,
   onNavClick,
 }: NavbarProps) {
+  const handleSectionClick = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    event.preventDefault();
+    onNavClick(sectionId);
+
+    const target = document.getElementById(sectionId);
+
+    if (!target) {
+      return;
+    }
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    if (window.location.hash !== `#${sectionId}`) {
+      window.history.pushState(null, "", `#${sectionId}`);
+    }
+  };
+
   const handleBrandClick = () => {
     window.location.href = "/";
   };
@@ -56,7 +73,7 @@ export default function Navbar({
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  onClick={() => onNavClick(item.id)}
+                  onClick={(event) => handleSectionClick(event, item.id)}
                   className={`transition hover:text-[var(--accent)] ${
                     isActive ? "text-[var(--accent)]" : "text-[var(--muted)]"
                   }`}

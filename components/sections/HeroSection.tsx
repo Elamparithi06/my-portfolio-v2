@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { resume } from "../portfolioData";
@@ -27,6 +26,22 @@ export default function HeroSection({ role }: HeroSectionProps) {
   };
 
   const resetCardTilt = () => setTilt({ x: 0, y: 0 });
+
+  const handleSectionLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    event.preventDefault();
+
+    const target = document.getElementById(sectionId);
+
+    if (!target) {
+      return;
+    }
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    if (window.location.hash !== `#${sectionId}`) {
+      window.history.pushState(null, "", `#${sectionId}`);
+    }
+  };
 
   useEffect(() => {
     let index = 0;
@@ -106,16 +121,18 @@ export default function HeroSection({ role }: HeroSectionProps) {
         <div className="hero-actions mt-8 flex flex-wrap gap-3 sm:gap-4">
           <a
             href="#projects"
+            onClick={(event) => handleSectionLinkClick(event, "projects")}
             className="btn-primary rounded-full px-5 py-3 text-sm font-semibold transition hover:translate-y-[-2px] sm:px-6"
           >
             View Projects
           </a>
-          <Link
+          <a
             href="#contact"
+            onClick={(event) => handleSectionLinkClick(event, "contact")}
             className="btn-secondary rounded-full px-5 py-3 text-sm font-semibold transition sm:px-6"
           >
             Hire Me
-          </Link>
+          </a>
           <a
             href={resume.file}
             download
