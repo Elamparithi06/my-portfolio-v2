@@ -96,46 +96,64 @@ export async function POST(request: Request) {
     </div>
   `;
 
-  const resendResponse = await fetch(resendApiUrl, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${resendApiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: resendFromEmail,
-      to: resendToEmail,
-      reply_to: email,
-      subject: `${subject || "Portfolio inquiry"} | Portfolio contact`,
-      text: recruiterDetails,
-      html: htmlMessage,
-    }),
-  });
+  try {
+    const resendResponse = await fetch(resendApiUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: resendFromEmail,
+        to: resendToEmail,
+        reply_to: email,
+        subject: `${subject || "Portfolio inquiry"} | Portfolio contact`,
+        text: recruiterDetails,
+        html: htmlMessage,
+      }),
+    });
 
-  if (!resendResponse.ok) {
-    const errorBody = await resendResponse.text();
+    if (!resendResponse.ok) {
+      const errorBody = await resendResponse.text();
+
+      console.error("Contact email send failed", {
+        status: resendResponse.status,
+        body: errorBody,
+      });
+
+      return NextResponse.json(
+        {
+          error:
+            errorBody || "Unable to send the message right now. Please try again later.",
+        },
+        { status: 502 },
+      );
+    }
+  } catch (error) {
+    console.error("Contact email request threw an error", error);
 
     return NextResponse.json(
-      {
-        error:
-          errorBody || "Unable to send the message right now. Please try again later.",
-      },
+      { error: "Unable to send the message right now. Please try again later." },
       { status: 502 },
     );
   }
 
-  await appendRecord("contact-submissions.json", {
-    submittedAt: new Date().toISOString(),
-    name,
-    email,
-    company,
-    subject,
-    message,
-    ip: requestMetadata.ip,
-    referrer: requestMetadata.referrer,
-    userAgent: requestMetadata.userAgent,
-    location: requestMetadata.location,
-  });
+  try {
+    await appendRecord("contact-submissions.json", {
+      submittedAt: new Date().toISOString(),
+      name,
+      email,
+      company,
+      subject,
+      message,
+      ip: requestMetadata.ip,
+      referrer: requestMetadata.referrer,
+      userAgent: requestMetadata.userAgent,
+      location: requestMetadata.location,
+    });
+  } catch (error) {
+    console.error("Contact submission was emailed but could not be stored", error);
+  }
 
   return NextResponse.json({
     message: "Thanks for reaching out. Your message has been sent.",
