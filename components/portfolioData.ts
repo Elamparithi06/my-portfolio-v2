@@ -26,7 +26,7 @@ export const projects: Project[] = [
       "Implemented frontend and backend integration with pluggable catalog providers for scalable product data.",
     link: "#",
     screenshot: "/projects/ecommerce-react.svg",
-    liveLink: "https://ecommerce-react-eight-xi.vercel.app",
+    liveLink: "https://novacart.veydris.in/",
   },
   {
     title: "YouTube Clone Application",
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     impact: "Integrated real-time video content, search, and listing flows similar to YouTube UI.",
     link: "#",
     screenshot: "/projects/youtube-clone.svg",
-    liveLink: "https://youtube-clone-six-teal.vercel.app/",
+    liveLink: "https://youtubeclone.veydris.in/",
   },
   {
     title: "Portfolio Website",
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     impact: "Implemented contact form without backend and responsive design across devices.",
     link: "#",
     screenshot: "/projects/portfolio-site.svg",
-    liveLink: "https://my-new-portfolio-virid.vercel.app/",
+    liveLink: "https://portfoliov1.veydris.in/",
   },
 ];
 
